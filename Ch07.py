@@ -10,7 +10,7 @@ from langchain_community.document_loaders import PDFPlumberLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_chains.summarize import load_summarize_chain
+from langchain.chains.summarize import load_summarize_chain
 from more_itertools import batched
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings # 引入 Gemini 相關套件
 
