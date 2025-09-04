@@ -1,6 +1,6 @@
-pdfplumber
-langchain
-langchain_openai
-langchain_community
-yfinance==0.2.54
-faiss-cpu
+pip install pdfplumber
+pip install langchain
+pip install langchain_community
+pip install langchain-google-genai
+pip install yfinance==0.2.54
+pip install faiss-cpu
