@@ -5,10 +5,8 @@ import pandas as pd
 import yfinance as yf
 import os, time
 from datetime import datetime, timedelta
-from FinMind.data import DataLoader
-dl = DataLoader()
-dl.login_by_token(api_token="你的token")
-data = dl.taiwan_stock_daily(stock_id="2330", start_date="2024-01-01")
+
+
 
 
 class StockDB:
@@ -68,6 +66,15 @@ class StockDB:
   def renew(self, if_renew_qu = True):
     self.renew_company() # 公司的基本資訊
     self.renew_daily() # 更新日頻的基本資訊
+    base_df = self.stock_price(stock_list, start_date)
+
+if base_df is None or base_df.empty:
+    print("⚠️ 沒有抓到資料，請檢查股票代碼或日期區間")
+    return  # 或者跳過這一檔
+
+# 交易日期
+date_list = base_df['日期'].str.replace('-', '')
+
     if if_renew_qu == True:
       self.renew_quarterly_frequency_basic() # 更新季頻的基本資訊
 
@@ -395,8 +402,9 @@ class StockDB:
     stock_list = (self.stock_name()['股號'] + '.TW').tolist()
 
     # 先取得股價資料
-    base_df = self.stock_price(stock_list, start_date)
+     = self.stock_price(stock_list, start_date)
     # 交易日期
+    
     date_list = base_df['日期'].str.replace('-', '')
     date_list = date_list.unique().tolist()
     date_list.pop()
@@ -484,4 +492,5 @@ class StockDB:
       print(result)
 
     print("=" * 40)
+
 
