@@ -5,6 +5,10 @@ import pandas as pd
 import yfinance as yf
 import os, time
 from datetime import datetime, timedelta
+from FinMind.data import DataLoader
+dl = DataLoader()
+dl.login_by_token(api_token="你的token")
+data = dl.taiwan_stock_daily(stock_id="2330", start_date="2024-01-01")
 
 
 class StockDB:
@@ -480,3 +484,4 @@ class StockDB:
       print(result)
 
     print("=" * 40)
+
